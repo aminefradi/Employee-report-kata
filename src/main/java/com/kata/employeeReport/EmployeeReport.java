@@ -18,7 +18,7 @@ public class EmployeeReport {
     public List<Employee> getEmployees(List<Employee> employees, boolean desc){
 
         return employees.stream()
-                        .filter(employee -> isUnderEighteen(employee)) //
+                        .filter(employee -> isOverEighteen(employee)) //
                         .sorted(desc ? Comparator.comparing(Employee::getName).reversed() : Comparator.comparing(Employee::getName)) //
                         .map(employee -> new Employee(employee.getName().toUpperCase(), employee.getAge())) //
                         .collect(Collectors.toList());
@@ -29,7 +29,7 @@ public class EmployeeReport {
      * @param employee
      * @return
      */
-    private boolean isUnderEighteen(Employee employee){
+    private boolean isOverEighteen(Employee employee){
         return employee.getAge() >= 18;
     }
 
